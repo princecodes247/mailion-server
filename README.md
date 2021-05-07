@@ -24,3 +24,7 @@
 [] Implement login and signup logic
 [] Add 404 page route
 [] Add add custom email setup
+
+### General
+
+[] Convert from EJS to Svelte later on
