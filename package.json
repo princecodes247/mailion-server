@@ -1,0 +1,11 @@
+{
+  "name": "mailion",
+  "version": "1.0.0",
+  "description": "An easy way to send messages directly to your mail from contact forms and reply instantly too",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prince Codes",
+  "license": "MIT"
+}
