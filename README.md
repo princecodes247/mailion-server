@@ -20,5 +20,7 @@
 [] Configure routes
 [] Configure models
 [] Setup mailing system for recieved and response
+[] Setup passport
 [] Implement login and signup logic
 [] Add 404 page route
+[] Add add custom email setup
