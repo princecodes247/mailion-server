@@ -14,6 +14,7 @@
 [] Create Dashboard page
 [] Create Settings page
 [] Add 404 page
+[] Work on metas
 
 ### Back-end
 
