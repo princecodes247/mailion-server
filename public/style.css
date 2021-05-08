@@ -1,0 +1,133 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: Montserrat, "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body {
+  font-size: 18px;
+  background-color: #f3f4f5;
+}
+
+body h1 {
+  font-size: 3em;
+}
+
+body h2 {
+  font-size: 2em;
+}
+
+body h3 {
+  font-size: 1.4em;
+}
+
+body h4 {
+  font-size: 1.24em;
+}
+
+body h5 {
+  font-size: 1.1em;
+}
+
+body button {
+  background-color: #398e2e;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+}
+
+header {
+  height: 10vh;
+  background-color: #832f8f;
+  color: white;
+  padding: 0 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section {
+  background-color: #f3f4f5;
+  padding: 0 5%;
+  padding-top: 10%;
+  text-align: center;
+}
+
+section h2 {
+  margin-bottom: 50px;
+}
+
+section#intro {
+  min-height: 90vh;
+  padding-top: 0;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  background-color: #832f8f;
+}
+
+section#about ul {
+  display: -ms-grid;
+  display: grid;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  grid-auto-rows: 200px;
+}
+
+section#about ul li {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #ddd;
+}
+
+section#about ul li h4 {
+  padding-bottom: 10px;
+}
+
+section#how {
+  min-height: auto;
+}
+
+section#dashboard ul li {
+  outline: 1px solid red;
+}
+
+section#dashboard ul li sub {
+  background-color: yellow;
+}
+
+footer {
+  height: 30vh;
+  background-color: #444;
+  color: white;
+  padding: 10px;
+}
+/*# sourceMappingURL=style.css.map */
