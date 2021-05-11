@@ -5,8 +5,8 @@ router.get("/", (req, res) => {
   res.render("home");
 });
 //FIX THESE ROUTES
-router.get("/faq", (req, res) => {
-  res.render("faq");
-});
+// router.get("/faq", (req, res) => {
+//   res.render("faq");
+// });
 
 module.exports = router;

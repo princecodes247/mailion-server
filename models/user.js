@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const UserSchema = mongoose.Schema({
-  UserName: {
+  userName: {
     type: String,
     required: true,
   },
@@ -24,7 +24,11 @@ const UserSchema = mongoose.Schema({
     default: [],
     required: false,
   },
-
+  plan: {
+    type: Number,
+    default: 0,
+    required: true,
+  },
   level: {
     type: Number,
     default: 0,

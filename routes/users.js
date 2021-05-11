@@ -28,7 +28,9 @@ router.get("/login", (req, res) => {
   res.render("login", { error: { type: "none" } });
 });
 router.get("/dashboard", ensureAuthenticated, (req, res) => {
-  res.render("dashboard", { user: req.user });
+  let user = { password, ...req.user };
+
+  res.render("dashboard", { user });
 });
 
 // Register User
@@ -43,6 +45,7 @@ router.post("/register", (req, res) => {
     email,
     password,
     password2,
+    plan: 0,
     level: 0,
   };
   User.findOne({
