@@ -182,6 +182,19 @@ section#dashboard ul li sub {
       align-self: flex-end;
 }
 
+section#dashboard .username {
+  position: relative;
+}
+
+section#dashboard .username::after {
+  content: "basic";
+  position: absolute;
+  font-size: 12px;
+  background-color: var(--sub-bg);
+  padding: 2px 5px;
+  border-radius: 12px;
+}
+
 footer {
   height: 30vh;
   background-color: #444;
@@ -258,5 +271,25 @@ form > input {
 
 main {
   min-height: 60vh;
+}
+
+.button {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  padding: 10px 20px;
+  border: none;
+  text-decoration: none;
+  border-radius: var(--border-rad-1);
+  color: white;
+  background-color: var(--button-active);
+}
+
+.line-list li {
+  list-style: inside;
+  text-align: left;
+  background-color: var(--sub-bg);
+  padding: 10px;
+  margin-bottom: 10px;
 }
 /*# sourceMappingURL=style.css.map */

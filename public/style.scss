@@ -111,6 +111,7 @@ section {
       height: min-content;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
+
       grid-auto-rows: 200px;
       li {
         display: flex;
@@ -119,6 +120,7 @@ section {
         justify-content: space-evenly;
         border-radius: var(--border-rad-1);
         background-color: var(--sub-bg);
+        //max-width: 400px;
         padding: 10px;
         overflow: hidden;
         &::before {
@@ -134,6 +136,17 @@ section {
           // background-color: yellow;
           align-self: flex-end;
         }
+      }
+    }
+    .username {
+      position: relative;
+      &::after {
+        content: "basic";
+        position: absolute;
+        font-size: 12px;
+        background-color: var(--sub-bg);
+        padding: 2px 5px;
+        border-radius: 12px;
       }
     }
   }
@@ -197,4 +210,24 @@ form {
 
 main {
   min-height: 60vh;
+}
+
+.button {
+  align-self: center;
+  padding: 10px 20px;
+  border: none;
+  text-decoration: none;
+  border-radius: var(--border-rad-1);
+  color: white;
+  background-color: var(--button-active);
+}
+
+.line-list {
+  li {
+    list-style: inside;
+    text-align: left;
+    background-color: var(--sub-bg);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
 }
