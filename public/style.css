@@ -64,9 +64,46 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+header .logo {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+header nav {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  max-width: 550px;
+}
+
+header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header nav ul li {
+  list-style: none;
 }
 
 section {
@@ -96,6 +133,14 @@ section#intro {
           justify-content: center;
   color: white;
   background-color: var(--prim-color);
+}
+
+section#intro a {
+  margin-top: 30px;
+}
+
+section#intro a button {
+  text-transform: capitalize;
 }
 
 section#about ul {
@@ -234,7 +279,6 @@ footer {
 }
 
 form {
-  outline: 1px solid red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -242,22 +286,50 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-bottom: 30px;
 }
 
 form label {
-  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+form label p {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 2%;
+  color: #333;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 form label input {
   padding: 10px;
   border: none;
   outline: 2px solid var(--transparent);
+  background-color: var(--sub-bg);
   -webkit-transition: 0.1s;
   transition: 0.1s;
 }
 
 form label input:focus-within {
   outline: 1px solid var(--prim-color);
+}
+
+form label input:focus-within + p {
+  color: var(--prim-color);
+  top: -25%;
+  font-size: 14px;
+  left: 0;
 }
 
 form > input {
@@ -291,5 +363,7 @@ main {
   background-color: var(--sub-bg);
   padding: 10px;
   margin-bottom: 10px;
+  list-style: none;
+  padding-left: 30px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -59,7 +59,30 @@ header {
   color: white;
   padding: 0 5%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+
+  .logo {
+    flex: 2;
+  }
+  nav {
+    flex: 4;
+
+    display: flex;
+    text-align: center;
+    justify-content: flex-end;
+    max-width: 550px;
+    ul {
+      display: flex;
+      // gap: 40%;
+      width: 100%;
+
+      justify-content: space-between;
+      li {
+        list-style: none;
+      }
+    }
+  }
 }
 
 section {
@@ -79,6 +102,12 @@ section {
     justify-content: center;
     color: white;
     background-color: var(--prim-color);
+    a {
+      margin-top: 30px;
+      button {
+        text-transform: capitalize;
+      }
+    }
   }
   &#about {
     ul {
@@ -185,18 +214,38 @@ footer {
 }
 
 form {
-  outline: 1px solid red;
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
   label {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: 30px;
+    // outline: 1px solid red;
+    position: relative;
+    p {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 2%;
+      color: #333;
+      transition: 0.2s;
+    }
     input {
       padding: 10px;
       border: none;
       outline: 2px solid var(--transparent);
+      background-color: var(--sub-bg);
       transition: 0.1s;
+
       &:focus-within {
         outline: 1px solid var(--prim-color);
+        & + p {
+          color: var(--prim-color);
+          top: -25%;
+          font-size: 14px;
+          left: 0;
+        }
       }
     }
   }
@@ -229,5 +278,7 @@ main {
     background-color: var(--sub-bg);
     padding: 10px;
     margin-bottom: 10px;
+    list-style: none;
+    padding-left: 30px;
   }
 }

@@ -1,14 +1,15 @@
 const bcrypt = require("bcrypt");
-// const express = require("express");
-
+const express = require("express");
 const router = express.Router();
 const sendResetCode = require("../utils/sendResetCode");
 const sendActivationMail = require("../utils/sendActivationMail");
+const idGenerator = require("../utils/idGenerator");
 const User = require("../models/user");
+const Warp = require("../models/warp");
 const passport = require("passport");
 const ensureAuthenticated = require("../config/auth");
 
-router.get("/admin", ensureAuthenticated, (req, res, next) => {
+router.get("/admin", (req, res, next) => {
   if (req.user.level == 2) {
     User.find().then((result) => {
       let temp = ({ userName, email, dateCreated, warps, status } = result);
@@ -27,12 +28,29 @@ router.get("/signup", (req, res) => {
 router.get("/login", (req, res) => {
   res.render("login", { error: { type: "none" } });
 });
-router.get("/dashboard", ensureAuthenticated, (req, res) => {
+router.get("/dashboard", (req, res) => {
   let user = { password, ...req.user };
 
   res.render("dashboard", { user });
 });
 
+router.get("/warp/create", (req, res) => {
+  // while (true) {
+  let warpID = idGenerator(6);
+  Warp.findOne({
+    warpID,
+  }).then((warp) => {
+    if (!warp) {
+      //return id;
+      console.log("not found");
+    }
+  });
+  //}
+
+  let warpData = {
+    warpID,
+  };
+});
 // Register User
 router.post("/register", (req, res) => {
   let { firstName, lastName, email, password, password2 } = req.body;
@@ -47,6 +65,7 @@ router.post("/register", (req, res) => {
     password2,
     plan: 0,
     level: 0,
+    warps: [],
   };
   User.findOne({
     email,

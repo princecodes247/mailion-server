@@ -1,8 +1,8 @@
 //OFFLINE USE
 
-dbPassword = "process.env.DB_KEY";
-if (process.env.APP_ENV == "development") {
-  dbPassword = "mongodb://127.0.0.1/mailion";
+dbPassword = "mongodb://127.0.0.1/mailion";
+if (process.env.APP_ENV == "production") {
+  dbPassword = "process.env.DB_KEY";
 }
 // process.env.DB_KEY ||
 module.exports = {

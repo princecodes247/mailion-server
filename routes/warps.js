@@ -6,6 +6,10 @@ router.get("/:warpname", (req, res) => {
   //
 });
 
+router.get("/settings", (req, res) => {
+  res.render("warp_settings");
+});
+
 router.post("/create", ensureAuthenticated, (req, res) => {
   //Finish this
   let warp = {

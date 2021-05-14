@@ -8,11 +8,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const app = express();
-const server = require("http").createServer(app);
-const io = require("socket.io")(server, {});
-const Session = require("./models/sessions");
 const User = require("./models/user");
-// const balanceControl = require("./utils/balanceControl");
 
 // Passport Config
 require("./config/passport")(passport);
@@ -56,11 +52,11 @@ app.use(express.static("public"));
 
 app.use("/", require("./routes/common.js"));
 app.use("/", require("./routes/users.js"));
-app.use("/", require("./routes/messages.js"));
+//app.use("/sss", require("./routes/messages.js"));
 //REMEBER TO ADD 404 PAGE
 app.use("/*", (req, res) => {
-  res.redirect("/");
+  res.redirect("/404");
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log("listening"));
+app.listen(PORT, () => console.log(`listening at ${PORT}`));
