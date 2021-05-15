@@ -34,18 +34,28 @@ router.get("/dashboard", (req, res) => {
   res.render("dashboard", { user });
 });
 
+router.get("/settings", (req, res) => {
+  res.render("settings");
+});
+router.post("/settings", (req, res) => {
+  res.json("hi");
+});
+
+//Remove the username in link
 router.get("/warp/create", (req, res) => {
-  // while (true) {
-  let warpID = idGenerator(6);
-  Warp.findOne({
-    warpID,
-  }).then((warp) => {
-    if (!warp) {
-      //return id;
-      console.log("not found");
-    }
-  });
-  //}
+  let newWarp = true;
+  while (newWarp) {
+    let warpID = idGenerator(6);
+    Warp.findOne({
+      warpID,
+    }).then((warp) => {
+      if (!warp) {
+        newWarp = false;
+        console.log("not found");
+      }
+    });
+    console.log(warpID);
+  }
 
   let warpData = {
     warpID,
@@ -53,8 +63,10 @@ router.get("/warp/create", (req, res) => {
 });
 // Register User
 router.post("/register", (req, res) => {
-  let { firstName, lastName, email, password, password2 } = req.body;
-  userName = firstName.toString().trim();
+  let { userName, email, password, password2 } = req.body;
+
+  console.log(req.body);
+  userName = userName.toString().trim();
   email = email.toString().trim();
   password = password.toString().trim();
   password2 = password2.toString().trim();
