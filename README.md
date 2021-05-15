@@ -7,23 +7,24 @@
 
 <!-- [] Create  -->
 
-[] Create Navbar
-[] Create Footer
-[] Create landing page
-[] Create Signup and login pages
-[] Create Dashboard page
+[*] Create Navbar
+[*] Create Footer
+[*] Create landing page
+[*] Create Signup and login pages
+[*] Create Dashboard page
 [] Create Settings page
 [] Add 404 page
 [] Work on metas
 
 ### Back-end
 
-[] Configure routes
-[] Configure models
-[] Setup mailing system for recieved and response
+[*] Configure routes
+[*] Configure models
+[*] Setup mailing system for recieved
+[] Setup mailing system for response
 [] Setup passport
-[] Implement login and signup logic
-[] Add 404 page route
+[*] Implement login and signup logic
+[*] Add 404 page route
 [] Add add custom email setup
 
 ### General

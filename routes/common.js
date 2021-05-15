@@ -18,6 +18,10 @@ router.get("/settings", (req, res) => {
 router.get("/dashboard", (req, res) => {
   res.render("dashboard");
 });
+router.get("/confirm-email", (req, res) => {
+  res.render("confirm-email");
+});
+
 //FIX THESE ROUTES
 // router.get("/faq", (req, res) => {
 //   res.render("faq");
