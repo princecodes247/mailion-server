@@ -8,16 +8,6 @@ router.get("/docs", (req, res) => {
   res.json("docs");
 });
 
-router.get("/warp", (req, res) => {
-  res.render("warp");
-});
-router.get("/settings", (req, res) => {
-  res.render("settings");
-});
-
-router.get("/dashboard", (req, res) => {
-  res.render("dashboard");
-});
 router.get("/confirm-email", (req, res) => {
   res.render("confirm-email");
 });

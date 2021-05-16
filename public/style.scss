@@ -54,7 +54,9 @@ body {
 }
 
 header {
-  height: 10vh;
+  height: 8vh;
+  min-height: 50px;
+  width: 100%;
   background-color: var(--prim-color);
   color: white;
   padding: 0 5%;
@@ -72,6 +74,9 @@ header {
     text-align: center;
     justify-content: flex-end;
     max-width: 550px;
+    @media screen and (max-width: 550px) {
+      display: none;
+    }
     ul {
       display: flex;
       // gap: 40%;
@@ -82,6 +87,82 @@ header {
         list-style: none;
       }
     }
+  }
+  .ham {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 25px;
+    height: 15px;
+    z-index: 10;
+  }
+  .ham span {
+    display: block;
+    height: 2px;
+    background: white;
+    border-radius: 4px;
+    transition: 0.6s ease;
+  }
+
+  .ham span:nth-child(1) {
+    position: relative;
+    width: 100%;
+    transform-origin: right;
+    top: calc(var(--ham-space) * -1);
+  }
+
+  .ham span:nth-child(2) {
+    position: relative;
+    width: 50%;
+  }
+
+  .ham span:nth-child(3) {
+    transform-origin: right;
+    position: relative;
+    width: 70%;
+    top: calc(var(--ham-space) * 1);
+  }
+  .click span:nth-child(1) {
+    background: var(--bg);
+    animation: 1.2s span1 0.5s both;
+  }
+
+  .click span:nth-child(2) {
+    background: var(--bg);
+    animation: 1s span2 0.3s forwards;
+  }
+
+  .click span:nth-child(3) {
+    background: var(--bg);
+    animation: 1.2s span3 0.5s forwards;
+  }
+
+  .ham-norm span:nth-child(1) {
+    animation: 1.2s rspan1 0.5s both;
+  }
+
+  .ham-norm span:nth-child(2) {
+    animation: 1s rspan2 0.3s forwards;
+  }
+
+  .ham-norm span:nth-child(3) {
+    animation: 1.2s rspan3 0.5s forwards;
+  }
+
+  .ham-norm span:nth-child(1) {
+    width: 110%;
+    transform: rotate(-30deg);
+  }
+
+  .ham-norm span:nth-child(2) {
+    transform: translateX(-480%);
+    width: 10%;
+  }
+
+  .ham-norm span:nth-child(3) {
+    width: 110%;
+    transform: rotate(30deg);
   }
 }
 
@@ -280,5 +361,139 @@ main {
     margin-bottom: 10px;
     list-style: none;
     padding-left: 30px;
+  }
+}
+
+.hidden {
+  display: hidden;
+}
+
+@media screen and (min-width: 550px) {
+  header {
+    height: 5vh;
+    padding-right: 40px;
+  }
+  header::after {
+    left: 99%;
+  }
+  .ham.ham-norm,
+  .ham.click,
+  div.ham {
+    display: none;
+    visibility: none;
+    opacity: 0;
+  }
+  footer {
+    height: 5vh;
+  }
+}
+@keyframes span1 {
+  0% {
+    width: 100%;
+  }
+  30% {
+    width: 10%;
+  }
+  32% {
+    transform: rotate(0deg);
+  }
+  35% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    width: 110%;
+    transform: rotate(-30deg);
+  }
+}
+@keyframes span2 {
+  0% {
+    width: 50%;
+  }
+  30% {
+    width: 10%;
+  }
+
+  45% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-480%);
+    width: 10%;
+  }
+}
+@keyframes span3 {
+  0% {
+    width: 70%;
+  }
+  30% {
+    width: 10%;
+  }
+  32% {
+    transform: rotate(0deg);
+  }
+  35% {
+    transform: rotate(30deg);
+  }
+  100% {
+    width: 110%;
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes rspan1 {
+  100% {
+    width: 100%;
+    transform: rotate(0deg);
+  }
+  70% {
+    width: 10%;
+    transform: rotate(-30deg);
+  }
+  72% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  0% {
+    width: 110%;
+    transform: rotate(-30deg);
+  }
+}
+@keyframes rspan2 {
+  100% {
+    width: 50%;
+    transform: translateX(0%);
+  }
+  70% {
+    width: 10%;
+  }
+
+  55% {
+    transform: translateX(0%);
+  }
+  0% {
+    transform: translateX(-480%);
+    width: 10%;
+  }
+}
+@keyframes rspan3 {
+  100% {
+    width: 70%;
+    transform: rotate(0deg);
+  }
+  70% {
+    width: 10%;
+    transform: rotate(30deg);
+  }
+  72% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  0% {
+    width: 110%;
+    transform: rotate(30deg);
   }
 }

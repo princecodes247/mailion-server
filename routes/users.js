@@ -7,7 +7,7 @@ const idGenerator = require("../utils/idGenerator");
 const User = require("../models/user");
 const Warp = require("../models/warp");
 const passport = require("passport");
-const ensureAuthenticated = require("../config/auth");
+const { ensureAuthenticated } = require("../config/auth");
 
 router.get("/admin", (req, res, next) => {
   if (req.user.level == 2) {
@@ -28,38 +28,45 @@ router.get("/signup", (req, res) => {
 router.get("/login", (req, res) => {
   res.render("login", { error: { type: "none" } });
 });
-router.get("/dashboard", (req, res) => {
-  let user = { password, ...req.user };
+router.get("/dashboard", ensureAuthenticated, (req, res) => {
+  //let user = { password, ...req.user };
 
-  res.render("dashboard", { user });
+  res.render("dashboard");
+  // , { user });
 });
 
-router.get("/settings", (req, res) => {
+router.get("/settings", ensureAuthenticated, (req, res) => {
   res.render("settings");
 });
-router.post("/settings", (req, res) => {
+router.post("/settings", ensureAuthenticated, (req, res) => {
   res.json("hi");
 });
 
 //Remove the username in link
-router.get("/warp/create", (req, res) => {
+router.get("/warp/create", ensureAuthenticated, (req, res) => {
   let newWarp = true;
-  while (newWarp) {
-    let warpID = idGenerator(6);
-    Warp.findOne({
-      warpID,
-    }).then((warp) => {
-      if (!warp) {
-        newWarp = false;
-        console.log("not found");
-      }
-    });
-    console.log(warpID);
-  }
 
-  let warpData = {
+  let warpID = idGenerator(6);
+
+  Warp.findOne({
     warpID,
-  };
+  }).then((warp) => {
+    if (!warp) {
+      newWarp = false;
+      console.log("not found");
+
+      console.log(warpID);
+      let warpData = {
+        warpID,
+        userName: req.user.userName,
+      };
+      Warp.create(warpData);
+      User.findOne({
+        email: req.user.email,
+      });
+    }
+  });
+  console.log(req.user);
 });
 // Register User
 router.post("/register", (req, res) => {
@@ -119,6 +126,11 @@ router.post("/login", (req, res, next) => {
     failureRedirect: "/login",
     failureFlash: true,
   })(req, res, next);
+});
+router.get("/logout", (req, res) => {
+  req.logout();
+  req.flash("success_msg", "You are logged out");
+  res.redirect("/users/login");
 });
 
 module.exports = router;
