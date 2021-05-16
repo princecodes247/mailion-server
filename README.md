@@ -22,7 +22,7 @@
 [*] Configure models
 [*] Setup mailing system for recieved
 [] Setup mailing system for response
-[] Setup passport
+[*] Setup passport
 [*] Implement login and signup logic
 [*] Add 404 page route
 [] Add add custom email setup
