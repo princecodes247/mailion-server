@@ -98,7 +98,6 @@ router.post("/register", (req, res) => {
               .then((user) => {
                 console.log("User Registered");
                 sendActivationMail(req, user);
-                res.redirect("/confirm-email");
               })
               .catch((err) => {
                 console.log({ err });
