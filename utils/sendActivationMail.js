@@ -54,6 +54,7 @@ const sendActivationMail = (req, user) => {
       console.log(err);
     } else {
       console.log("Confirmation Email Sent...");
+      res.redirect("/confirm-email");
     }
   });
 };
