@@ -8,6 +8,10 @@ router.get("/docs", (req, res) => {
   res.json("docs");
 });
 
+router.get("/404", (req, res) => {
+  res.render("docs");
+});
+
 router.get("/confirm-email", (req, res) => {
   res.render("confirm-email");
 });

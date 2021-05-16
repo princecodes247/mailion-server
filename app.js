@@ -55,9 +55,9 @@ app.use("/", require("./routes/users.js"));
 app.use("/warp", require("./routes/warps.js"));
 //app.use("/sss", require("./routes/messages.js"));
 //REMEBER TO ADD 404 PAGE
-app.use("/*", (req, res) => {
-  res.redirect("/404");
-});
+// app.use("/*", (req, res) => {
+//   res.redirect("/404");
+// });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`listening at ${PORT}`));
