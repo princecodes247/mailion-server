@@ -1,57 +1,78 @@
 const express = require("express");
 const router = express.Router();
-const ensureAuthenticated = require("../config/auth");
-
-router.get("/:warpname", (req, res) => {
+const { ensureAuthenticated } = require("../config/auth");
+const User = require("../models/user");
+const Warp = require("../models/warp");
+const sendWarpMail = require("../utils/sendWarpMail");
+router.get("/:warpID", ensureAuthenticated, (req, res) => {
   //
   res.render("warp");
 });
 
-router.get("/settings", (req, res) => {
-  res.render("warp_settings");
-});
+router.get("/create", ensureAuthenticated, (req, res) => {
+  if (req.user.warps.length < 1) {
+    let newWarp = true;
 
-router.post(":username/create", (req, res) => {
-  //Finish this
-  let newWarp = true;
-  while (newWarp) {
     let warpID = idGenerator(6);
+
     Warp.findOne({
       warpID,
     }).then((warp) => {
       if (!warp) {
         newWarp = false;
-        console.log("not found");
+        let warpData = {
+          warpID,
+          userName: req.user.userName,
+        };
+        Warp.create(warpData);
       }
     });
-    console.log(warpID);
-  }
+  } //ADD else statement
+});
 
-  let warpData = {
-    warpID,
-  };
-  Warp.create(warpData);
+//Change the request type
+router.get("/:warpID/delete", ensureAuthenticated, (req, res) => {
+  let warpID = req.query.warpID;
+  Warp.deleteOne({ warpID }).then((warp) => {
+    console.log(`${warp} dleted successfully`);
+  });
+});
+
+router.get("/:warpID/settings", ensureAuthenticated, (req, res) => {
+  res.render("warp_settings");
 });
 
 router.post("/:warpID", (req, res) => {
   //
+  let warpID = req.query.warpID;
   let formData = { ...req.body };
-  Warp.findOne({
-    warpID,
-  })
-    .then((warp) => {
-      warp.messages.push({ formData });
-      res.send({
-        message: "Successful",
-      });
+  // Move auth to header
+  if (req.body.auth) {
+    Warp.findOne({
+      warpID,
     })
-    .catch((err) => {
-      res.send({
-        message: "Successful",
-        error: err,
+      .then((warp) => {
+        if (warp.messages.length < 20) {
+          warp.messages.push({ formData });
+          warp.save().then(() => {
+            res.send({
+              message: "Successful",
+            });
+          });
+          if (warp.useMail == true) {
+            sendWarpMail(req, warp);
+          }
+        }
+      })
+      .catch((err) => {
+        res.send({
+          message: "Unsuccessful",
+          error: err,
+        });
+        return;
       });
-      return;
-    });
+  }
+  //ADD else statement
 });
 
 module.exports = router;

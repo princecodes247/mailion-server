@@ -10,7 +10,7 @@ const passport = require("passport");
 const { ensureAuthenticated } = require("../config/auth");
 
 router.get("/admin", (req, res, next) => {
-  if (req.user.level == 2) {
+  if (req.user.level == 3) {
     User.find().then((result) => {
       let temp = ({ userName, email, dateCreated, warps, status } = result);
       res.render("admin", {
@@ -29,10 +29,11 @@ router.get("/login", (req, res) => {
   res.render("login", { error: { type: "none" } });
 });
 router.get("/dashboard", ensureAuthenticated, (req, res) => {
-  //let user = { password, ...req.user };
+  let user = req.user;
 
-  res.render("dashboard");
-  // , { user });
+  Warp.find({ userName: user.userName }).then((warps) => {
+    res.render("dashboard", { user, warps });
+  });
 });
 
 router.get("/settings", ensureAuthenticated, (req, res) => {
@@ -43,31 +44,7 @@ router.post("/settings", ensureAuthenticated, (req, res) => {
 });
 
 //Remove the username in link
-router.get("/warp/create", ensureAuthenticated, (req, res) => {
-  let newWarp = true;
 
-  let warpID = idGenerator(6);
-
-  Warp.findOne({
-    warpID,
-  }).then((warp) => {
-    if (!warp) {
-      newWarp = false;
-      console.log("not found");
-
-      console.log(warpID);
-      let warpData = {
-        warpID,
-        userName: req.user.userName,
-      };
-      Warp.create(warpData);
-      User.findOne({
-        email: req.user.email,
-      });
-    }
-  });
-  console.log(req.user);
-});
 // Register User
 router.post("/register", (req, res) => {
   let { userName, email, password, password2 } = req.body;

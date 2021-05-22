@@ -11,9 +11,10 @@ module.exports = function (passport) {
       (username, password, done) => {
         // Match user
         User.findOne({
-          email: username,
+          userName: username,
         }).then((user) => {
-          if (!user) {
+          if (!user || user == null) {
+            console.log("nono");
             return done(null, false, { message: "No such registered user" });
           }
 

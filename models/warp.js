@@ -5,6 +5,10 @@ const WarpSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  authString: {
+    type: String,
+    required: true,
+  },
 
   userName: {
     type: String,
@@ -13,6 +17,11 @@ const WarpSchema = mongoose.Schema({
   messages: {
     type: Array,
     default: [],
+    required: false,
+  },
+  useMail: {
+    type: Boolean,
+    default: false,
     required: false,
   },
   dateCreated: {

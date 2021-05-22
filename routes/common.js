@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const sendWarpMail = require("../utils/sendWarpMail");
 
-router.get("/", (req, res) => {
+router.get("/a", (req, res) => {
+  sendWarpMail(req, { warpID: 1, messages: [] });
   res.render("home");
 });
 router.get("/docs", (req, res) => {
-  res.json("docs");
+  res.render("docs");
 });
 
 router.get("/404", (req, res) => {

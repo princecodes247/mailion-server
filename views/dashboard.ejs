@@ -13,27 +13,46 @@
         <ul>
             <li>
 
-                <h4>
-                    Create new warp
-                </h4>
-                <a href="/warp" class="button">Create warp</a>
+
+                <a href="/warp" class="button">Create new warp</a>
 
 
             </li>
             <li>
-                <div><sub>2189</sub>
-                    <input type="checkbox" name="warp-active" id="">
-                </div>
-                <h4>
-                    Name
-                </h4>
-                <div><progress value="10" max="20"></progress></div>
-                <p>20/20 Messages</p>
-                <p>Link: aaaaaaa</p>
-                <p></p>
+                <a href="/warp/2189">
+                    <div><sub>2189</sub>
+                        <input type="checkbox" name="warp-active" id="">
+                    </div>
+                    <h4>
+                        Name
+                    </h4>
+                    <div><progress value="10" max="20"></progress></div>
+                    <p>20/20 Messages</p>
+                    <p>Link: aaaaaaa</p>
+                    <p></p>
 
+                </a>
             </li>
+            <% warps.forEach(warp=> {%>
+                <li>
+                    <a href="/warp/2189">
+                        <div><sub>
+                                <%- warp.warpID %>
+                            </sub>
+                            <input type="checkbox" name="warp-active" id="">
+                        </div>
 
+                        <div><progress value="<%- warp.messages.length %>" max="20"></progress></div>
+                        <p>
+                            <%- warp.messages.length %> /20 Messages
+                        </p>
+                        <p>Link: mailion/<%- warp.warpID %>
+                        </p>
+                        <p></p>
+
+                    </a>
+                </li>
+                <% }); %>
 
         </ul>
     </section>
