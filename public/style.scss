@@ -179,6 +179,11 @@ header {
   }
 }
 
+main {
+  min-height: 60vh;
+  overflow: hidden;
+}
+
 section {
   background-color: var(--bg);
   padding: 0 5%;
@@ -188,7 +193,7 @@ section {
     margin-bottom: 50px;
   }
   &#intro {
-    min-height: 90vh;
+    height: 80vh;
     padding-top: 0;
     text-align: center;
     display: flex;
@@ -196,10 +201,23 @@ section {
     justify-content: center;
     color: white;
     background-color: var(--prim-color);
-    a {
-      margin-top: 30px;
-      button {
-        text-transform: capitalize;
+    position: relative;
+    .circle {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border: 3px solid var(--button-active);
+      border-radius: 100%;
+      &::before {
+        transform: translate(-50%, -50%);
+        border-radius: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        content: "";
+        width: 235px;
+        height: 235px;
+        border: 2px solid yellow;
       }
     }
   }
@@ -352,10 +370,6 @@ form {
   }
 }
 
-main {
-  min-height: 60vh;
-}
-
 .button {
   align-self: center;
   padding: 10px 20px;
@@ -402,9 +416,41 @@ main {
     margin-bottom: 10px;
     list-style: none;
     padding-left: 30px;
+
     a:link {
       color: var(--prim-color);
     }
+  }
+}
+
+.waitlist {
+  margin: 30px 0;
+  position: relative;
+  display: inline;
+
+  //outline: 1px solid red;
+  p {
+    left: 47%;
+    top: -30%;
+    position: absolute;
+    opacity: 0;
+    transform: translate(-95%, -50%) skew(20deg);
+    color: #666;
+    font-size: smaller;
+  }
+  input {
+    position: relative;
+    background-color: var(--sub-bg);
+    padding: 10px;
+    border: none;
+    &:focus-within + p {
+      opacity: 1;
+      transform: translate(-95%, -50%) skew(0deg);
+      transition: 0.4s;
+    }
+  }
+  button {
+    text-transform: capitalize;
   }
 }
 
