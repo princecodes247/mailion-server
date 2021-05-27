@@ -224,6 +224,11 @@ section {
         width: 70px;
         height: 50px;
         border-bottom: 2px dashed yellow;
+
+        transition: 0.58s ease;
+        &:hover {
+          width: 100px;
+        }
       }
       &.circle {
         top: -75px;

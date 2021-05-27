@@ -289,6 +289,12 @@ section#intro .pattern.line {
   width: 70px;
   height: 50px;
   border-bottom: 2px dashed yellow;
+  -webkit-transition: 0.58s ease;
+  transition: 0.58s ease;
+}
+
+section#intro .pattern.line:hover {
+  width: 100px;
 }
 
 section#intro .pattern.circle {
