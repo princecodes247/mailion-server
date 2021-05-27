@@ -243,6 +243,7 @@ section {
 
 section h2 {
   margin-bottom: 50px;
+  z-index: 3;
 }
 
 section#intro {
@@ -264,25 +265,98 @@ section#intro {
   position: relative;
 }
 
-section#intro .circle {
+section#intro .pattern {
   position: absolute;
-  width: 250px;
-  height: 250px;
-  border: 3px solid var(--button-active);
-  border-radius: 100%;
+  z-index: 0;
+  width: 170px;
+  height: 170px;
+  border: 2px dashed yellow;
 }
 
-section#intro .circle::before {
+section#intro .pattern::before {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border-radius: 100%;
   position: absolute;
   left: 50%;
   top: 50%;
   content: "";
-  width: 235px;
-  height: 235px;
-  border: 2px solid yellow;
+  width: 90%;
+  height: 90%;
+}
+
+section#intro .pattern.line {
+  border: none;
+  width: 70px;
+  height: 50px;
+  border-bottom: 2px dashed yellow;
+}
+
+section#intro .pattern.circle {
+  top: -75px;
+  left: -1px;
+  border-radius: 100%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  -webkit-transition: 0.7s ease;
+  transition: 0.7s ease;
+}
+
+section#intro .pattern.circle::before {
+  border-radius: 100%;
+  border: 3px solid var(--button-active);
+  -webkit-transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+section#intro .pattern.circle:hover {
+  -webkit-transform: translate(-50%) rotate(30deg);
+          transform: translate(-50%) rotate(30deg);
+}
+
+section#intro .pattern.circle:hover::before {
+  -webkit-transform: translate(-50%, -50%) scale(1.08);
+          transform: translate(-50%, -50%) scale(1.08);
+}
+
+section#intro .pattern.circle:nth-of-type(2) {
+  top: 50%;
+  left: 100%;
+}
+
+section#intro .pattern.triangle {
+  top: 10%;
+  left: 80%;
+  width: 50px;
+  height: 50px;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  border: none;
+  background-color: yellow;
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  -webkit-transition: 0.5s -webkit-transform cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: 0.5s -webkit-transform cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: 0.5s transform cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: 0.5s transform cubic-bezier(0.445, 0.05, 0.55, 0.95), 0.5s -webkit-transform cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+section#intro .pattern.triangle:hover {
+  -webkit-transform: translate(-50%) rotate(-10deg);
+          transform: translate(-50%) rotate(-10deg);
+}
+
+section#intro .pattern.triangle::before {
+  width: 85%;
+  height: 85%;
+  top: 53%;
+  border: none;
+  background-color: var(--prim-color);
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+section#intro .hero-text {
+  z-index: 2;
 }
 
 section#how {
