@@ -58,6 +58,11 @@ body {
   h5 {
     font-size: 1.1em;
   }
+  @media screen and (min-width: 768px) {
+    h1 {
+      font-size: 3.5em;
+    }
+  }
   button {
     background-color: var(--button-active);
     padding: 10px 20px;
@@ -67,6 +72,8 @@ body {
 }
 
 header {
+  position: sticky;
+  top: 0;
   height: 8vh;
   min-height: 50px;
   width: 100%;
@@ -76,6 +83,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 99;
 
   .logo {
     flex: 2;
@@ -203,6 +211,21 @@ section {
     color: white;
     background-color: var(--prim-color);
     position: relative;
+    @media screen and (min-width: 768px) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      .hero-text-cont {
+        justify-content: start;
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+    .hero-text-cont {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .pattern {
       position: absolute;
       z-index: 0;
@@ -239,7 +262,7 @@ section {
         &::before {
           border-radius: 100%;
           border: 3px solid var(--button-active);
-          transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+          transition: 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         &:hover {
           transform: translate(-50%) rotate(30deg);
@@ -506,7 +529,8 @@ form {
     padding: 10px;
     border: none;
     &:focus-within + p {
-      opacity: 1;
+      opacity: 0;
+
       transform: translate(-95%, -50%) skew(0deg);
       transition: 0.4s;
     }

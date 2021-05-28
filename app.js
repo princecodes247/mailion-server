@@ -53,7 +53,7 @@ app.use(express.static("public"));
 app.use("/", require("./routes/common.js"));
 app.use("/", require("./routes/users.js"));
 app.use("/warp", require("./routes/warps.js"));
-//app.use("/sss", require("./routes/messages.js"));
+app.use("/sss", require("./routes/messages.js"));
 //REMEBER TO ADD 404 PAGE
 // app.use("/*", (req, res) => {
 //   res.redirect("/404");

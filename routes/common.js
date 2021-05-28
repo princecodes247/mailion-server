@@ -3,8 +3,8 @@ const router = express.Router();
 const sendWarpMail = require("../utils/sendWarpMail");
 const BetaTester = require("../models/betaTester");
 
-router.get("/a", (req, res) => {
-  sendWarpMail(req, { warpID: 1, messages: [] });
+router.get("/", (req, res) => {
+  //sendWarpMail(req, { warpID: 1, messages: [] });
   res.render("home");
 });
 router.get("/docs", (req, res) => {
@@ -20,13 +20,19 @@ router.get("/confirm-email", (req, res) => {
 });
 
 router.post("/waitlist", (req, res) => {
-  let { email } = { ...req.body };
+  let { email } = req.body;
   let userData = {
     email,
   };
-  BetaTester.create(userData).then((res) => {
-    console.log("beta tester added");
-  });
+  console.log(req.body);
+  BetaTester.create(userData)
+    .then((resp) => {
+      console.log("beta tester added");
+      res.json("Added to waitlist");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 //FIX THESE ROUTES
