@@ -9,7 +9,7 @@ const Warp = require("../models/warp");
 const passport = require("passport");
 const { ensureAuthenticated } = require("../config/auth");
 
-router.get("/admin", (req, res, next) => {
+router.get("/admin", ensureAuthenticated, (req, res, next) => {
   if (req.user.level == 3) {
     User.find().then((result) => {
       let temp = ({ userName, email, dateCreated, warps, status } = result);
@@ -74,7 +74,13 @@ router.post("/register", (req, res) => {
             User.create(userData)
               .then((user) => {
                 console.log("User Registered");
-                sendActivationMail(req, user);
+                //sendActivationMail(req, user);
+                req.login(user, err=>{
+                  if(err){
+                    console.log(err);
+                  }
+                  res.redirect("/dashboard")
+                })
               })
               .catch((err) => {
                 console.log({ err });

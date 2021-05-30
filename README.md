@@ -37,6 +37,7 @@
 ### FIX
 
 [] Mails not sending
+[] Signup and login form issues
 
 ### General
 

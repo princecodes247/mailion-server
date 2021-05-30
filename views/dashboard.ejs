@@ -14,11 +14,11 @@
             <li>
 
 
-                <a href="/warp" class="button">Create new warp</a>
+                <a href="/warp/create" class="button">Create new warp</a>
 
 
             </li>
-            <li>
+            <!-- <li>
                 <a href="/warp/2189">
                     <div><sub>2189</sub>
                         <input type="checkbox" name="warp-active" id="">
@@ -32,10 +32,10 @@
                     <p></p>
 
                 </a>
-            </li>
+            </li> -->
             <% warps.forEach(warp=> {%>
                 <li>
-                    <a href="/warp/2189">
+                    <a href="/warp/">
                         <div><sub>
                                 <%- warp.warpID %>
                             </sub>

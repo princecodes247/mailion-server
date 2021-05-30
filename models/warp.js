@@ -5,10 +5,6 @@ const WarpSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  authString: {
-    type: String,
-    required: true,
-  },
 
   userName: {
     type: String,

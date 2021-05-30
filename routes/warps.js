@@ -4,7 +4,9 @@ const { ensureAuthenticated } = require("../config/auth");
 const User = require("../models/user");
 const Warp = require("../models/warp");
 const sendWarpMail = require("../utils/sendWarpMail");
-router.get("/:warpID", ensureAuthenticated, (req, res) => {
+const idGenerator = require("../utils/idGenerator");
+
+router.get("/view/:warpID", ensureAuthenticated, (req, res) => {
   //
   res.render("warp");
 });
@@ -20,34 +22,40 @@ router.get("/create", ensureAuthenticated, (req, res) => {
     }).then((warp) => {
       if (!warp) {
         newWarp = false;
+        req.user.warps.push(warpID)
         let warpData = {
           warpID,
           userName: req.user.userName,
         };
-        Warp.create(warpData);
+        Warp.create(warpData).then(()=>{
+          console.log("warp created");
+          res.json("warp created")
+        }).catch(err=>{
+          console.log(err);
+        })
       }
     });
   } //ADD else statement
 });
 
 //Change the request type
-router.get("/:warpID/delete", ensureAuthenticated, (req, res) => {
+router.get("/delete/:warpID", ensureAuthenticated, (req, res) => {
   let warpID = req.query.warpID;
   Warp.deleteOne({ warpID }).then((warp) => {
     console.log(`${warp} dleted successfully`);
   });
 });
 
-router.get("/:warpID/settings", ensureAuthenticated, (req, res) => {
+router.get("/settings/:warpID", ensureAuthenticated, (req, res) => {
   res.render("warp_settings");
 });
 
-router.post("/:warpID", (req, res) => {
+router.post("/form/:warpID", (req, res) => {
   //
   let warpID = req.query.warpID;
   let formData = { ...req.body };
   // Move auth to header
-  if (req.body.auth) {
+  if (true) {
     Warp.findOne({
       warpID,
     })
