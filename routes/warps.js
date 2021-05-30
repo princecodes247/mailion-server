@@ -50,7 +50,7 @@ router.get("/settings/:warpID", ensureAuthenticated, (req, res) => {
   res.render("warp_settings");
 });
 
-router.post("/form/:warpID", (req, res) => {
+router.post("/send/:warpID", (req, res) => {
   //
   let warpID = req.query.warpID;
   let formData = { ...req.body };
