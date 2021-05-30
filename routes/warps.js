@@ -12,7 +12,7 @@ router.get("/view/:warpID", ensureAuthenticated, (req, res) => {
 });
 
 router.get("/create", ensureAuthenticated, (req, res) => {
-  if (req.user.warps.length < 1) {
+  if (req.user.warps.length < 2) {
     let newWarp = true;
 
     let warpID = idGenerator(6);

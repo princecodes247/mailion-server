@@ -35,18 +35,18 @@
             </li> -->
             <% warps.forEach(warp=> {%>
                 <li>
-                    <a href="/warp/">
+                    <a href="/warp/send/">
                         <div><sub>
                                 <%- warp.warpID %>
                             </sub>
                             <input type="checkbox" name="warp-active" id="">
                         </div>
 
-                        <div><progress value="<%- warp.messages.length %>" max="20"></progress></div>
+                        <div><progress value="<%- warp.messages.length %>" max="100"></progress></div>
                         <p>
-                            <%- warp.messages.length %> /20 Messages
+                            <%- warp.messages.length %> /100 Messages
                         </p>
-                        <p>Link: mailion/<%- warp.warpID %>
+                        <p>Link: 127.0.0.1:5000/<%- warp.warpID %>
                         </p>
                         <p></p>
 
