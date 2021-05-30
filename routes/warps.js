@@ -42,7 +42,7 @@ router.get("/create", ensureAuthenticated, (req, res) => {
 router.get("/delete/:warpID", ensureAuthenticated, (req, res) => {
   let warpID = req.query.warpID;
   Warp.deleteOne({ warpID }).then((warp) => {
-    console.log(`${warp} dleted successfully`);
+    console.log(`${warp} deleted successfully`);
   });
 });
 
