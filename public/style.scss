@@ -428,6 +428,8 @@ form {
       left: 2%;
       color: #333;
       transition: 0.2s;
+      pointer-events: none;
+      
     }
     input {
       padding: 10px;
