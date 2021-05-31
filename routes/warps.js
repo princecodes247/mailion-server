@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const cors = require("cors")
 const { ensureAuthenticated } = require("../config/auth");
 const User = require("../models/user");
 const Warp = require("../models/warp");
