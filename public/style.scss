@@ -23,6 +23,7 @@
   --transparent: #832e8e00;
   --sub-prim-color: #f3f4f5;
   --border-rad-1: 10px;
+  --border-rad-2: 2px;
   --button-active: #398e2e;
 }
 body {
@@ -449,12 +450,7 @@ form {
       }
     }
   }
-  > input {
-    align-self: center;
-    padding: 10px 20px;
-    border: none;
-    background-color: var(--button-active);
-  }
+
 }
 
 .button {
@@ -462,7 +458,7 @@ form {
   padding: 10px 20px;
   border: none;
   text-decoration: none;
-  border-radius: var(--border-rad-1);
+  border-radius: var(--border-rad-2);
   color: white;
   background-color: var(--button-active);
 }

@@ -6,23 +6,23 @@
 
         <form action="/register" method="post">
             <label for="">
-                <input type="text" name="userName">
+                <input type="text" name="userName" autofocus required>
                 <p>Username</p>
             </label>
             <label for="">
-                <input type="text" name="email" id="">
+                <input type="text" name="email" id="" autofocus required>
                 <p>Email Address</p>
             </label>
             <label for="">
-                <input type="password" name="password">
+                <input type="password" name="password" autofocus required>
                 <p>Make a password</p>
             </label>
             <label for="">
-                <input type="password" name="password2" id="">
+                <input type="password" name="password2" id="" autofocus required>
                 <p>Confirm password</p>
             </label>
-
-            <input type="submit" value="Sign Up">
+<button class="button" type="submit">Sign Up</button>
+            
         </form>
     </section>
 </main>
