@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  
     <header>
         Mailion
     </header>
@@ -20,12 +21,12 @@
             </h2>
             <form action="/warp-751909" method="post">
                 <label for="">
-                    <input type="text">
+                    <input name="name" type="text">
                     <p>Username</p>
                 </label>
                 <label for="">
-                    <input type="password" name="" id="">
-                    <p>Password</p>
+                    <input type="Email" name="email" id="">
+                    <p>Email</p>
                 </label>
                 <input type="submit" value="Sign Up">
             </form>
@@ -38,6 +39,22 @@
     <footer>
         From Prince Codes 247
     </footer>
+    <script>
+        let form = document.querySelector("form");
+        form.addEventListener("submit",()=>{
+            event.preventDefault()
+            let formData = new FormData(form)
+            fetch("http://127.0.0.1:5500/send/warp330569", {
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                method: "POST",
+                body: formData
+            }).then(res=>{
+                console.log("sent");
+            })
+        })
+    </script>
 </body>
 
 </html>
