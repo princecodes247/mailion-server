@@ -438,7 +438,7 @@ form {
       background-color: var(--sub-bg);
       transition: 0.1s;
 
-      &:focus-within {
+      &:focus-within, &:valid {
         outline: 1px solid var(--prim-color);
         & + p {
           color: var(--prim-color);

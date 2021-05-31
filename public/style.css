@@ -569,6 +569,7 @@ form label p {
   color: #333;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  pointer-events: none;
 }
 
 form label input {
@@ -580,11 +581,11 @@ form label input {
   transition: 0.1s;
 }
 
-form label input:focus-within {
+form label input:focus-within, form label input:valid {
   outline: 1px solid var(--prim-color);
 }
 
-form label input:focus-within + p {
+form label input:focus-within + p, form label input:valid + p {
   color: var(--prim-color);
   top: -25%;
   font-size: 14px;
