@@ -44,14 +44,16 @@
         form.addEventListener("submit",()=>{
             event.preventDefault()
             let formData = new FormData(form)
-            fetch("http://127.0.0.1:5500/send/warp330569", {
+            fetch("http://127.0.0.1:5000/warp/send/warp330569", {
                 headers:{
                     "Content-Type": "application/json"
                 },
                 method: "POST",
-                body: formData
+                body: JSON.stringify(formData)
             }).then(res=>{
                 console.log("sent");
+            }).catch(err=>{
+                console.log(err);
             })
         })
     </script>
