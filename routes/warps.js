@@ -53,28 +53,30 @@ router.get("/settings/:warpID", ensureAuthenticated, (req, res) => {
 
 router.post("/send/:warpID", (req, res) => {
   //
-  console.log(req.params);
+  
 
   let warpID = req.params.warpID;
   let formData = { ...req.body };
   // Move auth to header
-  console.log(req.body);
+  
   if (true) {
     Warp.findOne({
       warpID,
     })
       .then((warp) => {
-        console.log("under");
-        if (warp.messages.length < 20) {
+        
+        if (warp.messages.length < 100) {
           warp.messages.push({ formData });
           warp.save().then(() => {
-            res.send({
+            res.json({
               message: "Successful",
             });
           });
           if (warp.useMail == true) {
             sendWarpMail(req, warp);
           }
+        }else {
+          res.json("Warp limit exceeded")
         }
       })
       .catch((err) => {
@@ -84,7 +86,7 @@ router.post("/send/:warpID", (req, res) => {
         });
         return;
       });
-  }
+  } 
   //ADD else statement
 });
 

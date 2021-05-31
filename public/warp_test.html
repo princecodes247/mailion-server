@@ -19,13 +19,13 @@
             <h2>
                 Login
             </h2>
-            <form action="/warp-751909" method="post">
+            <form id="form" action="http://127.0.0.1:5000/warp/send/warp330569" method="post">
                 <label>
-                    <input name="name" type="text">
+                    <input name="username" type="text" id="name">
                     <p>Username</p>
                 </label>
                 <label >
-                    <input type="Email" name="email" id="">
+                    <input type="email" name="mail" id="">
                     <p>Email</p>
                 </label>
                 <input type="submit" value="Sign Up">
@@ -39,12 +39,12 @@
     <footer>
         From Prince Codes 247
     </footer>
-    <script>
-        let testForm = document.querySelector("form");
-        testForm.addEventListener("submit",()=>{
+    <!-- <script>
+        let testForm = document.getElementById("form");
+        testForm.addEventListener("submit",(event)=>{
             event.preventDefault()
-            const formData = new FormData(testForm)
-            console.log(formData);
+            let formData = new FormData(document.getElementById("form"))
+            console.log(formData.values());
             fetch("http://127.0.0.1:5000/warp/send/warp330569", {
                 method: "POST",
                 headers:{
@@ -57,7 +57,7 @@
                 console.log(err);
             })
         })
-    </script>
+    </script> -->
 </body>
 
 </html>
