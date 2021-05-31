@@ -51,7 +51,7 @@ router.get("/settings/:warpID", ensureAuthenticated, (req, res) => {
   res.render("warp_settings");
 });
 
-router.post("/send/:warpID", (req, res) => {
+router.post("/send/:warpID", cors(), (req, res) => {
   //
   
 
