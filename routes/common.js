@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   res.render("home");
 });
 router.get("/docs", (req, res) => {
-  res.render("docs");
+  res.json("docs");
 });
 
 router.get("/404", (req, res) => {
