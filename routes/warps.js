@@ -53,14 +53,18 @@ router.get("/settings/:warpID", ensureAuthenticated, (req, res) => {
 
 router.post("/send/:warpID", (req, res) => {
   //
-  let warpID = req.query.warpID;
+  console.log(req.params);
+
+  let warpID = req.params.warpID;
   let formData = { ...req.body };
   // Move auth to header
+  console.log(req.body);
   if (true) {
     Warp.findOne({
       warpID,
     })
       .then((warp) => {
+        console.log("under");
         if (warp.messages.length < 20) {
           warp.messages.push({ formData });
           warp.save().then(() => {

@@ -20,11 +20,11 @@
                 Login
             </h2>
             <form action="/warp-751909" method="post">
-                <label for="">
+                <label>
                     <input name="name" type="text">
                     <p>Username</p>
                 </label>
-                <label for="">
+                <label >
                     <input type="Email" name="email" id="">
                     <p>Email</p>
                 </label>
@@ -40,15 +40,16 @@
         From Prince Codes 247
     </footer>
     <script>
-        let form = document.querySelector("form");
-        form.addEventListener("submit",()=>{
+        let testForm = document.querySelector("form");
+        testForm.addEventListener("submit",()=>{
             event.preventDefault()
-            let formData = new FormData(form)
+            const formData = new FormData(testForm)
+            console.log(formData);
             fetch("http://127.0.0.1:5000/warp/send/warp330569", {
+                method: "POST",
                 headers:{
                     "Content-Type": "application/json"
                 },
-                method: "POST",
                 body: JSON.stringify(formData)
             }).then(res=>{
                 console.log("sent");
