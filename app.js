@@ -34,6 +34,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
+//Fix Session Warning
 app.use(
   session({
     secret: "secret",

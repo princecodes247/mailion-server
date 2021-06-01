@@ -9,7 +9,15 @@ const idGenerator = require("../utils/idGenerator");
 
 router.get("/view/:warpID", ensureAuthenticated, (req, res) => {
   //
-  res.render("warp");
+  let warpID = req.params.warpID;
+  
+  Warp.findOne({
+    warpID,
+  }).then((warp) => {
+  res.render("warp", {
+    warp
+  });
+})
 });
 
 router.get("/create", ensureAuthenticated, (req, res) => {
@@ -48,7 +56,17 @@ router.get("/delete/:warpID", ensureAuthenticated, (req, res) => {
 });
 
 router.get("/settings/:warpID", ensureAuthenticated, (req, res) => {
-  res.render("warp_settings");
+  let warpID = req.params.warpID;
+  
+  Warp.findOne({
+    warpID,
+  }).then((warp) => {
+  res.render("warp_settings", {
+    warpID,
+    owner: warp.userName,
+    useMail: warp.useMail
+  });
+})
 });
 
 router.post("/send/:warpID", cors(), (req, res) => {
@@ -87,7 +105,7 @@ router.post("/send/:warpID", cors(), (req, res) => {
         return;
       });
   } 
-  //ADD else statement
+  
 });
 
 module.exports = router;

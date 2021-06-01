@@ -17,15 +17,17 @@
             helpbtn
         </label>
         <ul class="messages">
-
-            <li class="message">
-                <span><b>Sender:</b> Prince</span>
-                <span><b>Ip Address:</b> 129</span>
-                <span><b>Country:</b> Nigeria</span>
-                <span><b>City:</b> Albama</span>
-                <span><b>Email:</b> tasker@gamil.com</span>
-                <span><b>Message:</b> Waddup bro</span>
-            </li>
+<% warp.messages.forEach(message => { %>
+    <li class="message">
+    <% let keys = Object.keys(message) %> 
+    <% let values = Object.values(message) %> 
+    <% for( let index = 0; index < keys.length; index++ ) { %>
+    
+        <span><b><%- keys[index] %> :</b> <%- values[index] %></span>
+    <% } %>
+ 
+    </li>
+<% }) %>
             <li class="message">
                 <span><b>Sender:</b> Prince</span>
                 <span><b>Ip Address:</b> 129</span>
