@@ -106,10 +106,15 @@ header .logo {
           flex: 2;
 }
 
+header .logo a {
+  color: #fff;
+}
+
 header nav {
   -webkit-box-flex: 4;
       -ms-flex: 4;
           flex: 4;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -131,6 +136,7 @@ header nav ul {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  height: 100%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -138,6 +144,29 @@ header nav ul {
 
 header nav ul li {
   list-style: none;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header a {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ddd;
+  text-decoration: none;
+  height: inherit;
+  -webkit-transition: 0.2s color cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: 0.2s color cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+header a:hover {
+  color: #fff;
 }
 
 header .ham {

@@ -88,10 +88,13 @@ header {
 
   .logo {
     flex: 2;
+    a {
+      color: #fff;
+    }
   }
   nav {
     flex: 4;
-
+    height: 100%;
     display: flex;
     text-align: center;
     justify-content: flex-end;
@@ -103,11 +106,26 @@ header {
       display: flex;
       // gap: 40%;
       width: 100%;
+      height: 100%;
 
       justify-content: space-between;
       li {
         list-style: none;
+        height: 100%;
+        display: flex;
       }
+    }
+  }
+  a {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: #ddd;
+    text-decoration: none;
+    height: inherit;
+    transition: 0.2s color cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    &:hover {
+      color: #fff;
     }
   }
   .ham {
