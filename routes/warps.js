@@ -36,9 +36,9 @@ router.get("/create", ensureAuthenticated, (req, res) => {
           warpID,
           userName: req.user.userName,
         };
-        Warp.create(warpData).then(()=>{
+        Warp.create(warpData).then(warp=>{
           console.log("warp created");
-          res.json("warp created")
+          res.json({body: warp})
         }).catch(err=>{
           console.log(err);
         })
