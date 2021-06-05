@@ -14,7 +14,7 @@
             <li>
 
 
-                <a href="/warp/create" class="button">Create new warp</a>
+                <button id="warp-create-btn" class="button">Create new warp</>
 
 
             </li>
@@ -60,3 +60,14 @@
 
 
 </main>
+<script>
+    let createWarpBtn = document.querySelector("#warp-create-btn")
+    createWarpBtn.addEventListener("click", ()=>{
+        fetch("/warp/create").then(res=>{
+            console.log(res);
+            res.json()
+        }).then(data=>{
+            console.log(data);
+        })
+    })
+</script>
